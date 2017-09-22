@@ -33,6 +33,7 @@ define(['jquery','template','util'],function($,template,util){
         data : $('#teacherForm').serialize(),
         dataType : 'json',
         success : function(data){
+        	console.log(data);
           if(data.code == 200){
             location.href = '/teacher/list';
           }
