@@ -1,4 +1,4 @@
-define(['jquery','template'],function($,template){
+define(['jquery','template','region'],function($,template){
 	// 调用接口获取所有的个人信息
 	$.ajax({
 		url: '/api/teacher/profile',
@@ -8,6 +8,11 @@ define(['jquery','template'],function($,template){
 			// console.log(data);
 			var html=template('settingsTpl',data.result);
 			$('#settingsInfo').html(html);
+
+			// 处理省市县三级联动
+			$('#pcd').region({
+				url: '/public/assets/jquery-region/region.json',
+			});
 		}
 	});
 	
