@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify','region'],function($,template){
+define(['jquery','template','ckeditor','uploadify','region','datepicker','language'],function($,template,CKEDITOR){
 	// 调用接口获取所有的个人信息
 	$.ajax({
 		url: '/api/teacher/profile',
@@ -28,6 +28,9 @@ define(['jquery','template','uploadify','region'],function($,template){
 			$('#pcd').region({
 				url: '/public/assets/jquery-region/region.json',
 			});
+
+			// 富文本编辑
+			CKEDITOR.replace('editor');
 		}
 	});
 	
