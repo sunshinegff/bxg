@@ -16,6 +16,11 @@ define(['jquery'],function($){
 				});
 			}
 			return tcId;
+		},
+
+		setMenu:function(path){
+			// 设置导航菜单选中
+			$('.aside .navs a[href="'+path+'"]').addClass('active');
 		}
 	}
 })
