@@ -10,7 +10,7 @@ define(['jquery','template','util','form'],function($,template,util){
 			dataType: 'json',
 			success: function(data){
 				if(data.code==200){
-					location.href='/course/basic?cs_id'+data.result.cs_id;
+					location.href='/course/basic?cs_id='+data.result.cs_id;
 				}
 			}
 		})

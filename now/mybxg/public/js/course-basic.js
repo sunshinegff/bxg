@@ -9,9 +9,9 @@ define(['jquery','template','util'],function($,template,util){
 	$.ajax({
 		type: 'get',
 		url: '/api/course/basic',
-		data: { cs_id:csId},
+		data: {cs_id : csId},
 		dataType: 'json',
-		succss:function(data){
+		success:function(data){
 			if(flag){
 				data.result.operate='编辑课程';
 			}else{
