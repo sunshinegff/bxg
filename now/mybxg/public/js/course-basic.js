@@ -1,4 +1,4 @@
-define(['jquery','template','util'],function($,template,util){
+define(['jquery','template','util','validate','form'],function($,template,util){
 	// 设置导航菜单选中
 	util.setMenu('/course/add');
 	// 获取课程id
@@ -35,11 +35,29 @@ define(['jquery','template','util'],function($,template,util){
 					success: function(data){
 						var tpl = '<option value="">请选择二级分类...</option>{{each list}}<option value="{{$value.cg_id}}">{{$value.cg_name}}</option>{{/each}}';
                         var html = template.render(tpl,{list:data.result});
-                        console.log(html);
+                        // console.log(html);
                         $('#secondType').html(html);
 					}
-				})
-			})
+				});
+
+				// 处理表单提交
+				$('#basicForm').validate({
+					sendForm: false,
+					valid: function(){
+						// 验证表单
+						$(this).ajaxSubmit({
+							type: 'post',
+							url: '/api/course/update/basic',
+							data: {cs_id:csId},
+							dataType: 'json',
+							success: function(data){
+								// console.log(data);
+								location.href='/course/picture?cs_id='+data.result.cs_id;
+							}
+						});
+					}
+				});
+			});
 		}
 	});
 
